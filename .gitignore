@@ -18,6 +18,10 @@ backend/data_store/*
 frontend/node_modules/
 frontend/dist/
 
+# Local-only docs (not published to the repo)
+DEMO.md
+DEPLOY.md
+
 # Misc
 .DS_Store
 *.log
