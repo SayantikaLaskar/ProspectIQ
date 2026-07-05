@@ -1,0 +1,23 @@
+# Python
+backend/.venv/
+**/__pycache__/
+*.pyc
+
+# Secrets / local tooling — never commit
+.env
+backend/.env
+.claude/
+
+# Generated data (large / regenerable) — but KEEP the precomputed serve files
+backend/data_store/*
+!backend/data_store/precomputed_leads.json
+!backend/data_store/precomputed_metrics.json
+!backend/data_store/real_benchmark.json
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+
+# Misc
+.DS_Store
+*.log

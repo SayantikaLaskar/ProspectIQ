@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+body {
+  @apply bg-[#04060d] font-sans text-slate-200;
+}
+
+@layer base {
+  .font-display,
+  .font-mono,
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+}
+
+@layer components {
+  .glass {
+    @apply relative border border-white/[0.08] bg-white/[0.04] backdrop-blur-xl;
+  }
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-emerald-400/30 hover:bg-white/[0.06];
+  }
+  /* animated shimmering gradient headline */
+  .gradient-text {
+    background: linear-gradient(100deg, #6ee7b7, #5eead4, #67e8f9, #a5b4fc, #6ee7b7);
+    background-size: 220% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: sheen 9s linear infinite;
+  }
+  .gradient-border {
+    background:
+      linear-gradient(#0a0f1d, #0a0f1d) padding-box,
+      linear-gradient(130deg, rgba(52, 211, 153, 0.5), rgba(34, 211, 238, 0.25), rgba(255, 255, 255, 0.05)) border-box;
+    border: 1px solid transparent;
+  }
+  /* flowing conic-ish gradient border */
+  .flow-border {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(#0a0f1d, #0a0f1d) padding-box,
+      linear-gradient(120deg, #34d399, #22d3ee, #6366f1, #34d399) border-box;
+    background-size: 100% 100%, 300% 100%;
+    animation: flowborder 7s linear infinite;
+  }
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    background-size: 46px 46px;
+  }
+  /* cursor spotlight glow (set --mx / --my on hover) */
+  .spotlight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(52, 211, 153, 0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+  }
+  .spotlight:hover::after {
+    opacity: 1;
+  }
+  /* light sweep on primary buttons */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -160%;
+    height: 100%;
+    width: 55%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transform: skewX(-20deg);
+  }
+  .btn-shine:hover::after {
+    animation: shine 0.9s ease;
+  }
+}
+
+@layer utilities {
+  .glow-emerald {
+    box-shadow: 0 0 60px -18px rgba(16, 185, 129, 0.55);
+  }
+  .text-glow {
+    text-shadow: 0 0 28px rgba(52, 211, 153, 0.35);
+  }
+}
+
+@keyframes sheen {
+  to { background-position: 220% center; }
+}
+@keyframes flowborder {
+  to { background-position: 0 0, 300% 0; }
+}
+@keyframes shine {
+  to { left: 160%; }
+}
+
+/* scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { @apply rounded-full bg-white/10; }
+::-webkit-scrollbar-thumb:hover { @apply bg-white/20; }
+
+/* recharts dark theme */
+.recharts-cartesian-grid line { stroke: rgba(148, 163, 184, 0.08); }
+.recharts-text { fill: #94a3b8; }
+.recharts-default-tooltip {
+  background: rgba(10, 15, 29, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  color: #e2e8f0 !important;
+}

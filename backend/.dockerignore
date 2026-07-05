@@ -1,0 +1,9 @@
+.venv/
+**/__pycache__/
+*.pyc
+.env
+# large / regenerable data — the image only needs the precomputed serve files
+data_store/transactions.pkl
+data_store/customers.json
+data_store/ground_truth.json
+data_store/bank-full.csv

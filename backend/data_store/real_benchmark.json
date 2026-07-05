@@ -1,0 +1,7 @@
+{
+  "dataset": "UCI Bank Marketing (bank-full.csv)",
+  "n": 45211,
+  "positive_rate": 0.117,
+  "auc_precontact": 0.7997,
+  "auc_with_duration": 0.9355
+}
